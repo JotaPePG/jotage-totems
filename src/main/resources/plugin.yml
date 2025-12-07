@@ -1,0 +1,6 @@
+name: jotage-totems
+version: '1.0'
+main: org.jotage.jotageTotems.JotageTotems
+api-version: '1.21'
+authors: [ jotage ]
+description: Minecraft machines plugin
