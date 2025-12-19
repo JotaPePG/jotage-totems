@@ -1,0 +1,34 @@
+# Cooldown entre teleportes (em segundos)
+cooldown: 300
+
+# Tempo de contagem regressiva antes do teleporte (em segundos)
+teleport-countdown: 3
+
+# Custo em níveis de XP por teleporte
+xp-cost: 1
+
+# Máximo de totens que um jogador pode criar
+max-totems-per-player: 20
+
+# Tempo para confirmar quebra de totem (em segundos)
+break-confirmation-time: 5
+
+# Efeitos visuais e sonoros
+effects:
+  particles: true
+  particle-type: PORTAL
+  sounds: true
+  sound-type: ENTITY_ENDERMAN_TELEPORT
+  countdown-sound: BLOCK_NOTE_BLOCK_PLING
+
+# Configurações do bloco do totem
+totem-block:
+  # Material do bloco (BEDROCK, LODESTONE, RESPAWN_ANCHOR, END_PORTAL_FRAME)
+  material: BEDROCK
+
+  # Se true, o bloco é indestrutível (nem explosões destroem)
+  indestructible: true
+
+  # Se true, adiciona partículas ao redor do totem
+  particles-ambient: true
+  particle-type: PORTAL

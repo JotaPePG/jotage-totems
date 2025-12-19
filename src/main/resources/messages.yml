@@ -1,0 +1,44 @@
+prefix: "&8[&5Totem&8]&r"
+
+# Criação e registro
+totem-created: "{prefix} &aTotem criado com sucesso!"
+totem-registered: "{prefix} &aTotem registrado! Use click direito para teleportar."
+totem-already-registered: "{prefix} &cVocê já registrou este totem."
+totem-break-confirm: "{prefix} &eClique novamente para confirmar a quebra do totem."
+totem-removed: "{prefix} &cTotem removido."
+
+# Teleporte
+teleport-started: "{prefix} &aTeleporte iniciado... Não se mova!"
+teleport-countdown: "{prefix} &e{seconds}..."
+teleport-success: "{prefix} &aTeleportado para &f{totem}&a!"
+teleport-cancelled-moved: "{prefix} &cTeleporte cancelado: você se moveu!"
+teleport-cancelled-damage: "{prefix} &cTeleporte cancelado: você tomou dano!"
+
+# Erros
+error-no-permission: "{prefix} &cVocê não tem permissão para isso."
+error-cooldown: "{prefix} &cAguarde {time} para teleportar novamente."
+error-no-xp: "{prefix} &cVocê precisa de {xp} níveis de XP."
+error-max-totems: "{prefix} &cVocê atingiu o limite de {max} totens."
+error-not-totem: "{prefix} &cIsso não é um totem de teleporte."
+error-no-totems: "{prefix} &cVocê não tem nenhum totem registrado."
+
+# Menu
+menu-title: "Seus Totens"
+menu-totem-lore:
+  - "&7Dono: &f{owner}"
+  - "&7Localização: &f{x}, {y}, {z}"
+  - "&7Mundo: &f{world}"
+  - "&7Criado: &f{date}"
+  - ""
+  - "&eClique para teleportar"
+  - "&7Shift + Click para renomear"
+
+# Erros
+error-generic: "{prefix} &cOcorreu um erro. Tente novamente."
+error-not-owner: "{prefix} &cVocê não é o dono deste totem."
+error-totem-exists: "{prefix} &cJá existe um totem nesta posição."
+error-totem-indestructible: "{prefix} &cEste totem é indestrutível."
+error-totem-invalid: "{prefix} &cEste totem não é mais válido."
+
+# Teleporte ativo
+teleport-already-active: "{prefix} &cVocê já está teleportando!"

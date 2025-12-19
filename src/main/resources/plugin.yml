@@ -1,6 +1,17 @@
 name: jotage-totems
-version: '1.0'
-main: org.jotage.jotageTotems.JotageTotems
+version: ${project.version}
+main: com.jotage.jotageTotems.JotageTotems
 api-version: '1.21'
 authors: [ jotage ]
-description: Minecraft machines plugin
+description: Sistema de teleporte com totens compartilháveis
+
+permissions:
+  totem.create:
+    description: Permite criar e posicionar totens
+    default: true
+  totem.use:
+    description: Permite usar o sistema de teleporte
+    default: true
+  totem.admin:
+    description: Bypass de limites e cooldowns
+    default: op
