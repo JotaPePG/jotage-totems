@@ -4,6 +4,6 @@
     data de criacao
     nick de quem criou
 
-- Acessar o menu de totems com botao direito e mao vazia, bastando apenas shift + direito em um bloco totem.
+- Acessar o menu de totems com botao direito e mao vazia, bastando apenas shift + direito em um bloco totem. FEITO
 - Centralizar os items de totem ao centro do Menu, e os items em volta serem painel de vidro roxo.
-- Funcionalidade de alterar o Nome do totem.
+- Funcionalidade de alterar o Nome do totem. FEITO

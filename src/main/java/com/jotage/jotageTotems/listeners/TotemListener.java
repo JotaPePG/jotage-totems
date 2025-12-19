@@ -39,23 +39,16 @@ public class TotemListener implements Listener {
             return;
         }
 
-        // Verifica se tem item na mão
-        if (item == null) {
-            return;
+        // ===== CENÁRIO A: TEM ITEM DE TOTEM NA MÃO =====
+        if (item != null && plugin.getRecipeManager().isTotemItem(item)) {
+            // Shift + Click = COLOCAR TOTEM
+            if (player.isSneaking()) {
+                handleTotemPlacement(event, player, item);
+            }
+            return; // ✅ Não processa mais nada se tem item de totem
         }
 
-        // Verifica se é o item de totem
-        if (!plugin.getRecipeManager().isTotemItem(item)) {
-            return;
-        }
-
-        // ===== CENÁRIO 1: SHIFT + CLICK = COLOCAR TOTEM =====
-        if (player.isSneaking()) {
-            handleTotemPlacement(event, player, item);
-            return;
-        }
-
-        // ===== CENÁRIO 2: CLICK EM BLOCO = INTERAGIR COM TOTEM =====
+        // ===== CENÁRIO B: MÃO VAZIA + CLICOU EM BLOCO =====
         if (action == Action.RIGHT_CLICK_BLOCK) {
             Block clickedBlock = event.getClickedBlock();
 
@@ -103,9 +96,6 @@ public class TotemListener implements Listener {
             return;
         }
 
-        // ===== PEDE O NOME DO TOTEM =====
-        // TODO: Implementar sistema de chat input
-        // Por enquanto, usa nome padrão
         String totemName = "Totem de " + player.getName();
 
         // ===== CRIA O TOTEM =====

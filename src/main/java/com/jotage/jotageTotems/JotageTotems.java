@@ -1,5 +1,6 @@
 package com.jotage.jotageTotems;
 
+import com.jotage.jotageTotems.listeners.ChatListener;
 import com.jotage.jotageTotems.listeners.TotemListener;
 import com.jotage.jotageTotems.managers.*;
 import com.jotage.jotageTotems.ui.TotemMenu;
@@ -14,6 +15,7 @@ public final class JotageTotems extends JavaPlugin {
     private TotemManager totemManager;
     private TeleportHandler teleportHandler;
     private TotemMenu totemMenu;
+    private ChatListener chatListener;
 
     private static final String RESET = "\u001B[0m";
     private static final String GREEN = "\u001B[32m";
@@ -66,8 +68,13 @@ public final class JotageTotems extends JavaPlugin {
 
             // Loads totemMenu
             totemMenu = new TotemMenu(this);
-            getServer().getPluginManager().registerEvents(new TotemMenu(this), this);
+            getServer().getPluginManager().registerEvents(totemMenu, this);
             getLogger().info(GREEN + "✓ TotemMenu registrado" + RESET);
+
+            // Loads chatListener
+            chatListener = new ChatListener(this);
+            getServer().getPluginManager().registerEvents(chatListener, this);
+            getLogger().info(GREEN + "✓ ChatListener registrado" + RESET);
 
             totemManager.loadFromFile();
             playerDataManager.loadFromFile();
@@ -116,6 +123,7 @@ public final class JotageTotems extends JavaPlugin {
         totemManager = null;
         teleportHandler = null;
         totemMenu = null;
+        chatListener = null;
 
         instance = null;
 
@@ -148,5 +156,9 @@ public final class JotageTotems extends JavaPlugin {
 
     public TotemMenu getTotemMenu() {
         return totemMenu;
+    }
+
+    public ChatListener getChatListener() {
+        return chatListener;
     }
 }

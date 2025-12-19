@@ -57,6 +57,17 @@ public class TotemMenu implements Listener {
         PlayerTotemData data = plugin.getPlayerDataManager().getPlayerData(playerId);
         Set<UUID> registeredTotems = data.getRegisteredTotems();
 
+        ItemStack glassPane = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE, 1);
+        ItemMeta metaGlass = glassPane.getItemMeta();
+        metaGlass.setDisplayName(".");
+        glassPane.setItemMeta(metaGlass);
+
+        int[] slots = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53};
+
+        for (int slot : slots) {
+            inventory.setItem(slot, glassPane);
+        }
+
         int slot = 0;
 
         // Para cada totem registrado
@@ -75,6 +86,9 @@ public class TotemMenu implements Listener {
             ItemStack item = createTotemItem(player, totem);
 
             // Adiciona ao inventário
+            while (inventory.getItem(slot) != null) {
+                slot++;
+            }
             inventory.setItem(slot, item);
             slot++;
 
@@ -245,41 +259,21 @@ public class TotemMenu implements Listener {
     }
 
     private void handleRename(Player player, Totem totem) {
-        // TODO: Implementar sistema de chat input
-        // Por enquanto, apenas mensagem
+
+        boolean isOwner = totem.getOwnerId().equals(player.getUniqueId());
+        boolean isAdmin = player.hasPermission("totem.admin");
+
+        if (!isOwner && !isAdmin) {
+            player.sendMessage(ChatColor.RED + "✗ Você não tem permissão para renomear este totem!");
+            player.sendMessage(ChatColor.GRAY + "(Apenas o dono ou admins podem renomear)");
+            return;
+        }
+
         player.closeInventory();
-        player.sendMessage(ChatColor.YELLOW + "Sistema de renomeação em breve!");
 
-        // Exemplo de como seria:
-        // 1. Fecha menu
-        // 2. Pede ao jogador digitar novo nome no chat
-        // 3. Escuta próxima mensagem do jogador
-        // 4. Define o nome customizado
-        // 5. Reabre o menu
-
-        /*
-        player.closeInventory();
-        player.sendMessage(ChatColor.YELLOW + "Digite o novo nome do totem:");
-
-        // Aguarda próxima mensagem (precisa de um ChatListener)
-        // chatListener.waitForInput(player, (input) -> {
-        //     plugin.getPlayerDataManager().setCustomName(
-        //         player.getUniqueId(),
-        //         totem.getId(),
-        //         input
-        //     );
-        //     player.sendMessage(ChatColor.GREEN + "Totem renomeado!");
-        //     open(player);
-        // });
-        */
+        plugin.getChatListener().waitForRename(player, totem.getId());
     }
 
-    /**
-     * Atualiza o menu para um jogador.
-     * Útil para recarregar após mudanças.
-     *
-     * @param player Jogador
-     */
     public void refresh(Player player) {
         // Se o jogador está com o menu aberto
         if (player.getOpenInventory().getTitle().equals(MENU_TITLE)) {
